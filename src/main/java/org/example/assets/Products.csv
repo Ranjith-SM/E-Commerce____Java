@@ -1,0 +1,12 @@
+id,title,desc,price,stocks,category
+1, "Tshirt", "Tshirt", 100, 10, dressCategory
+2, "Tshirt", "Tshirt", 100, 10, dressCategory
+3, "Tshirt", "Tshirt", 100, 10, dressCategory
+4, "Tshirt", "Tshirt", 100, 10, dressCategory
+5, "Tshirt", "Tshirt", 100, 10, dressCategory
+6, "Tshirt", "Tshirt", 100, 10, dressCategory
+7, "Tshirt", "Tshirt", 100, 10, dressCategory
+8, "iPhone", "iPhone", 1000, 10, mobileCategory
+9, "iPhone", "iPhone", 1000, 10, mobileCategory
+10, "iPhone", "iPhone", 1000, 10, mobileCategory
+11, "iPhone", "iPhone", 1000, 10, mobileCategory
