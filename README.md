@@ -71,7 +71,7 @@ like other e-commerce , the user can able to register and login and buy products
 
 
 ## Screenshots
-<img src="screenshots/login.png" height="100" width="250" >
+<img src="screenshots/login.png" >
 
 
 
