@@ -2,8 +2,6 @@ package org.example.Models;
 
 import org.example.utils.AppException;
 
-import java.sql.Timestamp;
-
 public class Product {
     private int id;
     private String title;
@@ -19,6 +17,14 @@ public class Product {
         this.price = price;
         this.stocks = stocks;
         this.category = category;
+    }
+
+    public Product() {
+
+    }
+
+    public Product(String product) {
+        this.title=product;
     }
 
     public int getId() {
@@ -65,10 +71,13 @@ public class Product {
     }
 
     public Category getCategory() {
+//        System.out.println(category.getId());
         return category;
     }
 
     public void setCategory(Category category) {
         this.category = category;
     }
+
+
 }

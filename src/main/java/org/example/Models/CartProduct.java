@@ -9,6 +9,10 @@ public class CartProduct {
         this.count = count;
     }
 
+    public CartProduct() {
+
+    }
+
     public Product getProduct() {
         return product;
     }

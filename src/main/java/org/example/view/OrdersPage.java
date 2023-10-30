@@ -34,4 +34,15 @@ public class OrdersPage {
         println("#---------------------#");
     }
 
+    public void printNoOrders() {
+        try {
+            println("#---------------------#");
+            println(StringUtils.NO_ORDER);
+            println("#---------------------#");
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }

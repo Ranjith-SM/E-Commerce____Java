@@ -26,4 +26,14 @@ public class StringUtils {
     public static final String PLACE_ORDER = "Your order has been placed!!!";
     public static final String ORDERS = "Orders";
     public static final String THANK_YOU = "Thank you!!!";
+    public static final String NO_ORDER = "No orders placed so far";
+    public static final String ADMIN_MENU = "1. Categories \n2. Products \n3. Users \n4. Orders\n" +
+            "______________________________________________";
+
+    public static final String CATEGORIES_MENU = "1. View-Category \n2. Add-Category \n3. Edit-Category \n4. Delete \n99. Back";
+    public static final String ENTER_ID = "Enter Category id: ";
+    public static final String ENTER_CNAME = "Enter Category name: ";
+    public static final String CATEGORY_ADDED_SUCCESSFULLY = "!!!! Category is successfully added to the file !!!!";
+    public static final String REGISTERED_USERS = "Users-Registered: ";
 }
+

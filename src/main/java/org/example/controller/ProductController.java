@@ -12,12 +12,13 @@ import static org.example.utils.AppInput.enterNumber;
 import static org.example.utils.LoadUtils.getProducts;
 import static org.example.utils.Utils.println;
 
+
 public class ProductController implements IProductController {
 
-    private int categoryId = 0;
     private final ProductsPage productsPage;
     private final CartController cartController;
     private final HomeController homeController;
+    private int categoryId = 0;
 
     public ProductController(HomeController homeController) {
         productsPage = new ProductsPage();
@@ -31,12 +32,17 @@ public class ProductController implements IProductController {
         ArrayList<Product> products = getProducts();
         if (categoryId != 0) {
             ArrayList<Product> categoryProducts = new ArrayList<>();
+
             for (Product product : products) {
+
+//                System.out.println(product.getCategory().getId());
                 if (product.getCategory().getId() == categoryId) {
                     categoryProducts.add(product);
                 }
+
             }
             products = categoryProducts;
+            System.out.println(products);
         }
 
         productsPage.printProducts(products);

@@ -12,12 +12,12 @@ public class CartPage {
         println(StringUtils.EMPTY_CART);
     }
 
-    public void printCart(ArrayList<CartProduct> cartProducts) {
+    public void printCart(ArrayList<String[]> cartProducts) {
         println(StringUtils.CART);
         double total = 0;
-        for (CartProduct cartProduct : cartProducts) {
-            total += cartProduct.getCount() * cartProduct.getProduct().getPrice();
-            println(cartProduct.getProduct().getTitle() + " x " + cartProduct.getCount());
+        for (String[] cartProduct : cartProducts) {
+            total += Integer.parseInt(cartProduct[2]) * Double.parseDouble(cartProduct[1]);
+            println(cartProduct[0] + " -- " + cartProduct[1]+ " :: "+cartProduct[2]);
         }
         println(StringUtils.TOTAL_PRICE + total);
     }

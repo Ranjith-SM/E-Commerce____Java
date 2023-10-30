@@ -20,6 +20,7 @@ import java.util.Objects;
 
 import static org.example.utils.AppInput.enterNumber;
 import static org.example.utils.FileUtil.getFilePath;
+import static org.example.utils.FileUtil.getOrderFilePath;
 import static org.example.utils.UserUtils.getLoggedInUser;
 import static org.example.utils.Utils.println;
 
@@ -61,43 +62,50 @@ public class OrderController implements IOrderController {
 
     @Override
     public void printOrders() {
-        Map<String, String> files = listFilesForFolder(new File(getFilePath()));
-        ordersPage.printOrder(files);
-        try {
-            int orderId = enterNumber(StringUtils.ENTER_CHOICE);
-            if (orderId == 99) {
-                homeController.printMenu();
-            } else {
-                if (orderId > files.size()) {
-                    println(StringUtils.INVALID_CHOICE);
-                    printOrders();
+        Map<String, String> files = listFilesForFolder(new File(getOrderFilePath()));
+        if (files.isEmpty()) {
+            ordersPage.printNoOrders();
+            homeController.printMenu();
+        } else {
+//        System.out.println(files);
+            ordersPage.printOrder(files);
+            try {
+                int orderId = enterNumber(StringUtils.ENTER_CHOICE);
+                if (orderId == 99) {
+                    homeController.printMenu();
                 } else {
-                    int id = 1;
-                    String path = "";
-                    for (final String key : files.keySet()) {
-                        if (id == orderId) {
-                            path = files.get(key);
+                    if (orderId > files.size()) {
+                        println(StringUtils.INVALID_CHOICE);
+                        printOrders();
+                    } else {
+                        int id = 1;
+                        String path = "";
+                        for (final String key : files.keySet()) {
+                            if (id == orderId) {
+                                path = files.get(key);
+                            }
                         }
+                        BufferedReader r = new BufferedReader(new FileReader(getOrderFilePath() + path));
+                        String line;
+                        ordersPage.printDesign();
+                        while ((line = r.readLine()) != null) {
+                            println(line);
+                        }
+                        printOrders();
                     }
-                    BufferedReader r = new BufferedReader(new FileReader(getFilePath() + path));
-                    String line;
-                    ordersPage.printDesign();
-                    while ((line = r.readLine()) != null) {
-                        println(line);
-                    }
-                    printOrders();
                 }
-            }
 
-        } catch (AppException | IOException e) {
-            throw new RuntimeException(e);
+            } catch (AppException | IOException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 
     private Map<String, String> listFilesForFolder(final File folder) throws RuntimeException {
         Map<String, String> files = new HashMap<>();
         for (final File fileEntry : Objects.requireNonNull(folder.listFiles())) {
-            Path path = new File(getFilePath() + fileEntry.getName()).toPath();
+//            System.out.println(fileEntry);
+            Path path = new File(getOrderFilePath() + fileEntry.getName()).toPath();
             BasicFileAttributes file_att;
             try {
                 file_att = Files.readAttributes(
@@ -113,8 +121,9 @@ public class OrderController implements IOrderController {
             } catch (IOException | ParseException e) {
                 throw new RuntimeException(e);
             }
-
+            System.out.println(files);
         }
+
         return files;
     }
 }

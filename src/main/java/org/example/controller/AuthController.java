@@ -26,11 +26,13 @@ public class AuthController implements IAuthController {
     private final LoginPage loginPage;
     private final RegisterPage registerPage;
     private final AuthPage authPage;
+    private final AdminController adminController;
 
     public AuthController() {
         authPage = new AuthPage();
         loginPage = new LoginPage();
         registerPage = new RegisterPage();
+        adminController = new AdminController();
         homeController = new HomeController(this);
 
     }
@@ -64,10 +66,14 @@ public class AuthController implements IAuthController {
         email = enterString(StringUtils.ENTER_EMAIL);
         password = enterString(StringUtils.ENTER_PASSWORD);
 
-        User user = validateUser(email,password);
-        if (user!= null) {
+        User user = validateUser(email, password);
+        if (user != null) {
             setLoggedInUser(user);
-            homeController.printMenu();
+            if (email.equals("admin@kumaran.com") && password.equals("admin")) {
+                adminController.printMenu();
+            } else {
+                homeController.printMenu();
+            }
         } else {
             loginPage.printInvalid();
             authMenu();
@@ -75,7 +81,7 @@ public class AuthController implements IAuthController {
     }
 
     private User validateUser(String email, String password) {
-        try{
+        try {
             Scanner sc = new Scanner(getCredentialFile());
             while (sc.hasNext()) {
                 String value = sc.next().trim();
@@ -87,8 +93,9 @@ public class AuthController implements IAuthController {
                         user.setName(userArray[1]);
                         user.setEmail(userArray[2]);
                         user.setPassword(userArray[3]);
-                        if (user.getEmail().equals("admin@kumaran.com")){
+                        if (user.getEmail().equals("admin@kumaran.com")) {
                             user.setRole(Role.ADMIN);
+
                         } else {
                             user.setRole(Role.USER);
                         }

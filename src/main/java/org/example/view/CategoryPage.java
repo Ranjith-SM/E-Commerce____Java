@@ -17,9 +17,10 @@ public class CategoryPage {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-
+//        System.out.println(categories.size());
         for (Category category : categories) {
             println(category.getId() + ". " + category.getCName());
+
         }
         println(StringUtils.BACK_OPTION);
     }
