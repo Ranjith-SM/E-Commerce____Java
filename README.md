@@ -1,5 +1,5 @@
 
-![Logo](https://th.bing.com/th/id/OIP.17Z49hdASIEoD7ez2FX_QQHaHa?pid=ImgDet&rs=1 height=200px) 
+<img src= "https://th.bing.com/th/id/OIP.17Z49hdASIEoD7ez2FX_QQHaHa?pid=ImgDet&rs=1 height=200px"> 
 
 
 # E-commerce using Java
